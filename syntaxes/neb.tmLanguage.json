@@ -1,0 +1,99 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Nebula",
+	"scopeName": "source.nebula",
+	"patterns": [
+	  {"include": "#comments"},
+	  {"include": "#stdlibs-special"},
+	  {"include": "#functions"},
+	  {"include": "#strings"},
+	  {"include": "#numbers"},
+	  {"include": "#keywords"},
+	  {"include": "#operators"},
+	  {"include": "#error-handling"},
+	  {"include": "#punctuation"}
+	],
+	"repository": {
+	  "stdlibs-special": {
+		"name": "keyword.other.stdlibs.nebula",
+		"match": "\"stdlibs\""
+	  },
+	  "keywords": {
+		"name": "keyword.control.nebula",
+		"match": "\\b(função|retornar|fim|se|então|senão|mas|enquanto|caminhando|até|mudando|faça|conferir|usando|detalhes|levantar|como|e|ou|não|igual|declarar|constante|importar|de)\\b"
+	  },
+	  "functions": {
+		"patterns": [
+		  {
+			"name": "meta.function.declaration.nebula",
+			"match": "(função)\\s+([a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*)",
+			"captures": {
+			  "1": {"name": "keyword.function.nebula"},
+			  "2": {"name": "entity.name.function.nebula"}
+			}
+		  },
+		  {
+			"name": "support.function.builtin.nebula",
+			"match": "\\b(falar|pegar|len|procurar|colocar|estourar|perguntar|input_int|número|string|lista|func|picotar|limpar|extender|quadrado|cubo|raiz)\\b"
+		  }
+		]
+	  },
+	  "strings": {
+		"name": "string.quoted.double.nebula",
+		"begin": "\"",
+		"end": "\"",
+		"patterns": [
+		  {
+			"include": "#stdlibs-special"
+		  },
+		  {
+			"name": "constant.character.escape.nebula",
+			"match": "\\\\."
+		  }
+		]
+	  },
+	  "numbers": {
+		"name": "constant.numeric.neb",
+		"match": "-?\\d+(\\.\\d+)?"
+	  },
+	  "comments": {
+		"name": "comment.line.neb",
+		"match": "#.*"
+	  },
+	  "operators": {
+		"name": "keyword.operator.neb",
+		"match": "\\+|-|\\*|/|\\^|=|==|!=|<|>|<=|>=|->|\\b(igual)\\b"
+	  },
+	  "error-handling": {
+		"patterns": [
+		  {
+			"name": "keyword.error.neb",
+			"match": "\\b(conferir|levantar)\\b"
+		  },
+		  {
+			"include": "#strings"
+		  }
+		]
+	  },
+	  "punctuation": {
+		"patterns": [
+		  {
+			"name": "punctuation.parenthesis.neb",
+			"match": "[()]"
+		  },
+		  {
+			"name": "punctuation.bracket.neb",
+			"match": "[\\[\\]]"
+		  },
+		  {
+			"name": "punctuation.comma.neb",
+			"match": ","
+		  },
+		  {
+			"name": "punctuation.semicolon.neb",
+			"match": ";"
+		  }
+		]
+	  }
+	}
+  }
