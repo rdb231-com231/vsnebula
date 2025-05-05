@@ -6,18 +6,24 @@
     // symbols used as brackets
     "brackets": [
         ["[", "]"],
-        ["(", ")"]
+        ["(", ")"],
+        ["faça", "fim"],
+        ["então", "fim"]
     ],
     // symbols that are auto closed when typing
     "autoClosingPairs": [
         ["[", "]"],
         ["(", ")"],
         ["\"", "\""],
+        ["faça", "\nfim"],
+        ["então", "\nfim"]
     ],
     // symbols that can be used to surround a selection
     "surroundingPairs": [
         ["[", "]"],
         ["(", ")"],
         ["\"", "\""],
+        ["faça", "fim"],
+        ["então", "fim"]
     ]
 }

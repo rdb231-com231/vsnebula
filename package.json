@@ -2,7 +2,11 @@
   "name": "vsneb",
   "displayName": "vsneb",
   "description": "Visual Studio Code support for Nebula",
-  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rdb231-com231/vsnebula"
+  },
+  "version": "1.2.0",
   "engines": {
     "vscode": "^1.99.0"
   },

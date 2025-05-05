@@ -34,7 +34,7 @@
 		  },
 		  {
 			"name": "support.function.builtin.nebula",
-			"match": "\\b(falar|pegar|len|procurar|colocar|estourar|perguntar|input_int|número|string|lista|func|picotar|limpar|extender|quadrado|cubo|raiz)\\b"
+			"match": "\\b(falar|pegar|type|len|procurar|colocar|estourar|perguntar|input_int|número|string|lista|func|picotar|limpar|extender|quadrado|cubo|raiz|max|min|média|soma)\\b"
 		  }
 		]
 	  },
@@ -92,6 +92,10 @@
 		  {
 			"name": "punctuation.semicolon.neb",
 			"match": ";"
+		  },
+		  {
+			"name": "punctuation.faça-fim.neb",
+			"match": "\\b(faça|fim)\\b"
 		  }
 		]
 	  }
