@@ -11,16 +11,17 @@
 	  {"include": "#keywords"},
 	  {"include": "#operators"},
 	  {"include": "#error-handling"},
-	  {"include": "#punctuation"}
+	  {"include": "#punctuation"},
+	  {"include": "#identifiers"}
 	],
 	"repository": {
 	  "stdlibs-special": {
 		"name": "keyword.other.stdlibs.nebula",
-		"match": "\"stdlibs\""
+		"match": "\"(stdlibs|listas|math|arquivos)\""
 	  },
 	  "keywords": {
 		"name": "keyword.control.nebula",
-		"match": "\\b(função|retornar|fim|se|então|senão|mas|enquanto|caminhando|até|mudando|faça|conferir|usando|detalhes|levantar|como|e|ou|não|igual|declarar|constante|importar|de)\\b"
+		"match": "\\b(função|retornar|fim|se|então|senão|mas|enquanto|caminhando|até|mudando|faça|conferir|usando|detalhes|levantar|como|e|ou|não|igual|declarar|constante|importar|de|para|cada|em)\\b"
 	  },
 	  "functions": {
 		"patterns": [
@@ -34,7 +35,7 @@
 		  },
 		  {
 			"name": "support.function.builtin.nebula",
-			"match": "\\b(falar|pegar|type|len|procurar|colocar|estourar|perguntar|input_int|número|string|lista|func|picotar|limpar|extender|quadrado|cubo|raiz|max|min|média|soma)\\b"
+			"match": "\\b(falar|pegar|type|python|eval|ler_arquivo|escrever_arquivo|aleatório|\\.fatiar|len|\\.escrever|\\.ler|\\.mudar|\\.procurar|\\.colocar|\\.estourar|perguntar|input_int|número|string|lista|func|\\.picotar|limpar|\\.extender|quadrado|cubo|raiz|max|min|média|soma|\\.chaves|update|\\.itens|\\.valores|clicommand|executar)\\b"
 		  }
 		]
 	  },
@@ -43,13 +44,34 @@
 		"begin": "\"",
 		"end": "\"",
 		"patterns": [
-		  {
-			"include": "#stdlibs-special"
-		  },
+		  {"include": "#stdlibs-special"},
+		  {"include": "#interpolation"},
 		  {
 			"name": "constant.character.escape.nebula",
-			"match": "\\\\."
+			"match": "\\\\(\\\\|n|t|r|$|\")"
 		  }
+		]
+	  },
+	  "interpolation": {
+		"name": "meta.embedded.line.interpolation.nebula",
+		"begin": "\\$\\{",
+		"end": "\\}",
+		"contentName": "meta.embedded.line.interpolation.nebula",
+		"patterns": [
+		  {"include": "#identifiers"},
+		  {"include": "#expressions"}
+		]
+	  },
+	  "identifiers": {
+		"name": "variable.other.nebula",
+		"match": "\\b[a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*\\b"
+	  },
+	  "expressions": {
+		"patterns": [
+		  {"include": "#numbers"},
+		  {"include": "#operators"},
+		  {"include": "#functions"},
+		  {"include": "#keywords"}
 		]
 	  },
 	  "numbers": {
@@ -70,33 +92,18 @@
 			"name": "keyword.error.neb",
 			"match": "\\b(conferir|levantar)\\b"
 		  },
-		  {
-			"include": "#strings"
-		  }
+		  {"include": "#strings"}
 		]
 	  },
 	  "punctuation": {
 		"patterns": [
-		  {
-			"name": "punctuation.parenthesis.neb",
-			"match": "[()]"
-		  },
-		  {
-			"name": "punctuation.bracket.neb",
-			"match": "[\\[\\]]"
-		  },
-		  {
-			"name": "punctuation.comma.neb",
-			"match": ","
-		  },
-		  {
-			"name": "punctuation.semicolon.neb",
-			"match": ";"
-		  },
-		  {
-			"name": "punctuation.faça-fim.neb",
-			"match": "\\b(faça|fim)\\b"
-		  }
+		  {"name": "punctuation.parenthesis.neb", "match": "[()]"},
+		  {"name": "punctuation.bracket.neb", "match": "[\\[\\]]"},
+		  {"name": "punctuation.comma.neb", "match": ","},
+		  {"name": "punctuation.semicolon.neb", "match": ";"},
+		  {"name": "punctuation.dot.neb", "match": "\\."},
+		  {"name": "punctuation.faça-fim.neb", "match": "\\b(faça.fim)\\b"},
+		  {"name": "punctuation.então-fim.neb", "match": "\\b(então.fim)\\b"}
 		]
 	  }
 	}
