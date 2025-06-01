@@ -1,204 +1,230 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "Nebula",
-	"scopeName": "source.nebula",
-	"patterns": [
-	  {"include": "#comments"},
-	  {"include": "#strings"},
-	  {"include": "#numbers"},
-	  {"include": "#keywords"},
-	  {"include": "#operators"},
-	  {"include": "#punctuation"},
-	  {"include": "#class-definitions"},
-	  {"include": "#function-definitions"},
-	  {"include": "#function-calls"},
-	  {"include": "#identifiers"}
-	],
-	"repository": {
-	  "comments": {
-		"name": "comment.line.character.nebula",
-		"match": "#.*"
-	  },
-	  "strings": {
-		"name": "string.quoted.double.nebula",
-		"begin": "\"",
-		"end": "\"",
-		"patterns": [
-		  {"include": "#interpolation"},
-		  {
-			"name": "constant.character.escape.nebula",
-			"match": "\\\\(\\\\|n|t|r|b|f|\"|\\$)"
-		  }
-		]
-	  },
-	  "interpolation": {
-		"name": "meta.embedded.line.interpolation.nebula",
-		"begin": "\\$\\{",
-		"end": "\\}",
-		"contentName": "source.nebula.interpolated",
-		"patterns": [
-		  {"include": "$self"}
-		]
-	  },
-	  "numbers": {
-		"name": "constant.numeric.nebula",
-		"match": "\\b-?\\d+(\\.\\d+)?\\b"
-	  },
-	  "keywords": {
-		"patterns": [
-			{
-				"name": "keyword.control.flow.nebula",
-				"match": "\\b(se|então|senão|mas|enquanto|caminhando|até|para|cada|mudando|faça|fim|retornar|continuar|parar|importar|de)\\b"
-			},
-			{
-				"name": "keyword.declaration.nebula",
-				"match": "\\b(declarar|função|classe|extende)\\b"
-			},
-			{
-				"name": "keyword.modifier.nebula",
-				"match": "\\b(constante|privada)\\b"
-			},
-			{
-				"name": "keyword.operator.logical.nebula",
-				"match": "\\b(e|ou|não|igual|em)\\b"
-			},
-			{
-				"name": "keyword.error.handling.nebula",
-				"match": "\\b(conferir|levantar|usando|detalhes)\\b"
-			},
-			{
-				"name": "keyword.other.nebula",
-				"match": "\\b(como|assim|também)\\b"
-			},
-			{
-				"name": "storage.type.nebula",
-				"match": "\\b(lista|tupla|mesa|dicionário|string|número)\\b"
-			},
-			{
-				"name": "constant.language.boolean.nebula",
-				"match": "\\b(verdadeiro|falso)\\b"
-			},
-			{
-				"name": "constant.language.null.nebula",
-				"match": "\\b(nulo)\\b"
-			},
-			{
-				"name": "variable.language.self.nebula",
-				"match": "\\b(esse|super)\\b"
-			}
-		]
-	  },
-	  "operators": {
-		"patterns": [
-			{
-				"name": "keyword.operator.assignment.nebula",
-				"match": "=>|=|\\+=|-="
-			},
-			{
-				"name": "keyword.operator.arithmetic.nebula",
-				"match": "\\+|-|\\*|/|\\^"
-			},
-			{
-				"name": "keyword.operator.comparison.nebula",
-				"match": "==|!=|<=?|>=?"
-			}
-		]
-	  },
-	  "punctuation": {
-		"patterns": [
-		  {"name": "punctuation.parenthesis.open.nebula", "match": "\\("},
-		  {"name": "punctuation.parenthesis.close.nebula", "match": "\\)"},
-		  {"name": "punctuation.bracket.square.open.nebula", "match": "\\["},
-		  {"name": "punctuation.bracket.square.close.nebula", "match": "\\]"},
-		  {"name": "punctuation.bracket.curly.open.nebula", "match": "\\{"},
-		  {"name": "punctuation.bracket.curly.close.nebula", "match": "\\}"},
-		  {"name": "punctuation.separator.comma.nebula", "match": ","},
-		  {"name": "punctuation.terminator.statement.nebula", "match": ";"},
-		  {"name": "punctuation.accessor.dot.nebula", "match": "\\."},
-		  {"name": "punctuation.separator.colon.nebula", "match": ":"}
-		]
-	  },
-	  "identifiers": {
-		"name": "variable.other.readwrite.nebula",
-		"match": "\\b[a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*\\b"
-	  },
-	  "function-definitions": {
-		"patterns": [
-			{
-				"name": "meta.function.arrow.nebula",
-				"match": "\\b(função)\\s+(privada\\s+)?([a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*)?\\s*(usando)?\\s*(\\()([^)]*)(\\))\\s*(=>)",
-				"captures": {
-					"1": {"name": "keyword.declaration.nebula"},
-					"2": {"name": "keyword.modifier.nebula"},
-					"3": {"name": "entity.name.function.nebula"},
-					"4": {"name": "keyword.other.nebula"},
-					"5": {"name": "punctuation.parenthesis.open.nebula"},
-					"6": {"name": "variable.parameter.nebula"},
-					"7": {"name": "punctuation.parenthesis.close.nebula"},
-					"8": {"name": "keyword.operator.assignment.nebula"}
-				}
-			},
-			{
-				"name": "meta.function.block.nebula",
-				"begin": "\\b(função)\\s+(privada\\s+)?([a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*)?\\s*(usando)?\\s*(\\()([^)]*)(\\))",
-				"beginCaptures": {
-					"1": {"name": "keyword.declaration.nebula"},
-					"2": {"name": "keyword.modifier.nebula"},
-					"3": {"name": "entity.name.function.nebula"},
-					"4": {"name": "keyword.other.nebula"},
-					"5": {"name": "punctuation.parenthesis.open.nebula"},
-					"6": {"name": "variable.parameter.nebula"},
-					"7": {"name": "punctuation.parenthesis.close.nebula"}
-				},
-				"end": "\\b(fim)\\b",
-				"endCaptures": {
-					"1": {"name": "keyword.control.flow.nebula"}
-				},
-				"patterns": [
-					{"include": "$self"}
-				]
-			}
-		]
-	  },
-	  "class-definitions": {
-		"name": "meta.class.declaration.nebula",
-		"begin": "\\b(classe)\\s+([a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*)(?:\\s*(extende)\\s+([a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*))?",
-		"beginCaptures": {
-		  "1": {"name": "keyword.declaration.nebula"},
-		  "2": {"name": "entity.name.type.class.nebula"},
-		  "3": {"name": "keyword.declaration.nebula"},
-		  "4": {"name": "entity.other.inherited-class.nebula"}
-		},
-		"end": "\\b(fim)\\b",
-		"endCaptures": {
-			"1": {"name": "keyword.control.flow.nebula"}
-		},
-		"patterns": [
-		  {"include": "$self"}
-		]
-	  },
-	  "function-calls": {
-		"patterns": [
-		  {
-			"name": "support.function.builtin.nebula",
-			"match": "\\b(falar|pegar|perguntar|input_int|número|raiz|cubo|quadrado|string|len|frase|lista|func|type|aleatório|ler_arquivo|escrever_arquivo|executar|eval|python|update|esperar)\\b(?=\\s*\\()"
-		  },
-		  {
-			"name": "support.function.builtin.method.nebula",
-			"match": "(\\.)(picotar|limpar|fatiar|procurar|colocar|estourar|mudar|invertida|chaves|valores|itens|maiúsculo|minúsculo|extender)\\b(?=\\s*\\()"
-			  ,"captures": {
-				"1": {"name": "punctuation.accessor.dot.nebula"},
-				"2": {"name": "support.function.builtin.method.name.nebula"}
-			  }
-		  },
-		  {
-			"match": "\\b([a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*)\\s*(\\()",
-			"captures": {
-			  "1": {"name": "entity.name.function.call.nebula"},
-			  "2": {"name": "punctuation.parenthesis.open.nebula"}
-			}
-		  }
-		]
-	  }
-	}
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Nebula",
+  "scopeName": "source.nebula",
+  "patterns": [
+    {"include": "#comments"},
+    {"include": "#fstrings"},
+    {"include": "#numbers"},
+    {"include": "#keywords"},
+    {"include": "#operators"},
+    {"include": "#punctuation"},
+    {"include": "#class-definitions"},
+    {"include": "#function-definitions"},
+    {"include": "#function-calls"},
+    {"include": "#control-structures"},
+    {"include": "#identifiers"},
+    {"include": "#builtin-types"}
+  ],
+  "repository": {
+    "comments": {
+      "name": "comment.line.number-sign.nebula",
+      "match": "#.*"
+    },
+    "fstrings": {
+      "name": "string.quoted.double.nebula",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.nebula",
+          "match": "\\\\(\\\\|n|t|r|b|f|\"|\\$)"
+        },
+        {
+          "name": "meta.embedded.line.interpolation.nebula",
+          "begin": "\\$\\{",
+          "end": "\\}",
+          "contentName": "source.nebula.embedded",
+          "patterns": [{"include": "$self"}]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.integer.nebula",
+          "match": "\\b\\d+\\b"
+        },
+        {
+          "name": "constant.numeric.float.nebula",
+          "match": "\\b\\d+\\.\\d+\\b"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.flow.nebula",
+          "match": "\\b(se|então|senão|mas|enquanto|caminhando|até|para|cada|mudando|faça|fim|retornar|continuar|parar|importar|de|caso|tentar|conferir|levantar|detalhes|usando|comparar|extende|super)\\b"
+        },
+        {
+          "name": "keyword.declaration.nebula",
+          "match": "\\b(declarar|função|classe|constante|privada)\\b"
+        },
+        {
+          "name": "keyword.operator.logical.nebula",
+          "match": "\\b(e|ou|não|igual|em|assim|também|como)\\b"
+        }
+      ]
+    },
+    "builtin-types": {
+      "name": "support.type.nebula",
+      "match": "\\b(lista|tupla|mesa|dicionário|string|número|verdadeiro|falso|nulo)\\b"
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.assignment.nebula",
+          "match": "=>|=|\\+=|-="
+        },
+        {
+          "name": "keyword.operator.arithmetic.nebula",
+          "match": "\\+|-|\\*|/|\\^"
+        },
+        {
+          "name": "keyword.operator.comparison.nebula",
+          "match": "==|!=|<=|>=|<|>"
+        },
+        {
+          "name": "keyword.operator.access.nebula",
+          "match": "\\."
+        }
+      ]
+    },
+    "punctuation": {
+      "patterns": [
+        {"name": "punctuation.parenthesis.open.nebula", "match": "\\("},
+        {"name": "punctuation.parenthesis.close.nebula", "match": "\\)"},
+        {"name": "punctuation.bracket.square.open.nebula", "match": "\\["},
+        {"name": "punctuation.bracket.square.close.nebula", "match": "\\]"},
+        {"name": "punctuation.bracket.curly.open.nebula", "match": "\\{"},
+        {"name": "punctuation.bracket.curly.close.nebula", "match": "\\}"},
+        {"name": "punctuation.separator.comma.nebula", "match": ","},
+        {"name": "punctuation.terminator.statement.nebula", "match": ";"},
+        {"name": "punctuation.separator.colon.nebula", "match": ":"},
+        {"name": "punctuation.separator.arrow.nebula", "match": "->"}
+      ]
+    },
+    "identifiers": {
+      "name": "variable.other.readwrite.nebula",
+      "match": "\\b[a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*\\b"
+    },
+    "function-definitions": {
+      "patterns": [
+        {
+          "name": "meta.function.arrow.nebula",
+          "begin": "\\b(função)\\s+(privada\\s+)?([a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*)?\\s*(usando)?\\s*\\(",
+          "beginCaptures": {
+            "1": {"name": "keyword.declaration.nebula"},
+            "2": {"name": "keyword.modifier.nebula"},
+            "3": {"name": "entity.name.function.nebula"},
+            "4": {"name": "keyword.other.nebula"}
+          },
+          "end": "\\)\\s*(=>)",
+          "endCaptures": {
+            "1": {"name": "keyword.operator.assignment.nebula"}
+          },
+          "patterns": [
+            {"include": "#parameters"}
+          ]
+        },
+        {
+          "name": "meta.function.block.nebula",
+          "begin": "\\b(função)\\s+(privada\\s+)?([a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*)?\\s*(usando)?\\s*\\(",
+          "beginCaptures": {
+            "1": {"name": "keyword.declaration.nebula"},
+            "2": {"name": "keyword.modifier.nebula"},
+            "3": {"name": "entity.name.function.nebula"},
+            "4": {"name": "keyword.other.nebula"}
+          },
+          "end": "\\b(fim)\\b",
+          "endCaptures": {"1": {"name": "keyword.control.flow.nebula"}},
+          "patterns": [
+            {"include": "#parameters"},
+            {"include": "$self"}
+          ]
+        }
+      ]
+    },
+    "parameters": {
+      "name": "meta.parameters.nebula",
+      "patterns": [
+        {
+          "name": "variable.parameter.nebula",
+          "match": "\\b[a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*\\b"
+        },
+        {"include": "#punctuation"}
+      ]
+    },
+    "class-definitions": {
+      "name": "meta.class.declaration.nebula",
+      "begin": "\\b(classe)\\s+([a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*)(?:\\s+(extende)\\s+([a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*))?",
+      "beginCaptures": {
+        "1": {"name": "keyword.declaration.nebula"},
+        "2": {"name": "entity.name.type.class.nebula"},
+        "3": {"name": "keyword.declaration.nebula"},
+        "4": {"name": "entity.other.inherited-class.nebula"}
+      },
+      "end": "\\b(fim)\\b",
+      "endCaptures": {"1": {"name": "keyword.control.flow.nebula"}},
+      "patterns": [{"include": "$self"}]
+    },
+    "control-structures": {
+      "patterns": [
+        {
+          "name": "meta.control.try-catch.nebula",
+          "begin": "\\b(tentar)\\b",
+          "beginCaptures": {"1": {"name": "keyword.control.flow.nebula"}},
+          "end": "\\b(fim)\\b",
+          "endCaptures": {"1": {"name": "keyword.control.flow.nebula"}},
+          "patterns": [
+            {
+              "begin": "\\b(caso)\\b",
+              "beginCaptures": {"1": {"name": "keyword.control.flow.nebula"}},
+              "end": "\\b(faça)\\b",
+              "endCaptures": {"1": {"name": "keyword.control.flow.nebula"}},
+              "patterns": [{"include": "$self"}]
+            }
+          ]
+        },
+        {
+          "name": "meta.control.switch.nebula",
+          "begin": "\\b(comparar)\\b",
+          "beginCaptures": {"1": {"name": "keyword.control.flow.nebula"}},
+          "end": "\\b(fim)\\b",
+          "endCaptures": {"1": {"name": "keyword.control.flow.nebula"}},
+          "patterns": [
+            {
+              "match": "\\b(caso|senão)\\b",
+              "name": "keyword.control.flow.nebula"
+            },
+            {"include": "$self"}
+          ]
+        }
+      ]
+    },
+    "function-calls": {
+      "patterns": [
+        {
+          "name": "support.function.builtin.nebula",
+          "match": "\\b(falar|pegar|perguntar|input_int|número|raiz|cubo|quadrado|str|len|type|aleatório|ler_arquivo|escrever_arquivo|executar|eval|python|update|esperar)\\b(?=\\s*\\()"
+        },
+        {
+          "name": "support.function.builtin.method.nebula",
+          "match": "(\\.)(picotar|limpar|fatiar|procurar|colocar|estourar|mudar|invertida|chaves|valores|itens|maiúsculo|minúsculo|extender)\\b(?=\\s*\\()",
+          "captures": {
+            "1": {"name": "punctuation.accessor.dot.nebula"},
+            "2": {"name": "support.function.builtin.method.name.nebula"}
+          }
+        },
+        {
+          "match": "\\b([a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*)\\s*(\\()",
+          "captures": {
+            "1": {"name": "entity.name.function.call.nebula"},
+            "2": {"name": "punctuation.parenthesis.open.nebula"}
+          }
+        }
+      ]
+    }
+  }
 }
