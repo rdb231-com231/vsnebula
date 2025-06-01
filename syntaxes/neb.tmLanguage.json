@@ -13,8 +13,9 @@
     {"include": "#function-definitions"},
     {"include": "#function-calls"},
     {"include": "#control-structures"},
-    {"include": "#identifiers"},
-    {"include": "#builtin-types"}
+    {"include": "#dictionary-keys"},
+    {"include": "#self-reference"},
+    {"include": "#identifiers"}
   ],
   "repository": {
     "comments": {
@@ -69,7 +70,7 @@
     },
     "builtin-types": {
       "name": "support.type.nebula",
-      "match": "\\b(lista|tupla|mesa|dicionário|string|número|verdadeiro|falso|nulo|esse)\\b"
+      "match": "\\b(lista|tupla|mesa|dicionário|string|número|verdadeiro|falso|nulo)\\b"
     },
     "operators": {
       "patterns": [
@@ -167,7 +168,17 @@
       },
       "end": "\\b(fim)\\b",
       "endCaptures": {"1": {"name": "keyword.control.flow.nebula"}},
-      "patterns": [{"include": "$self"}]
+      "patterns": [
+        {
+          "match": "\\b(esse)\\b",
+          "name": "variable.language.self.nebula"
+        },
+        {"include": "$self"}
+      ]
+    },
+    "self-reference": {
+      "name": "variable.language.self.nebula",
+      "match": "\\b(esse|super)\\b"
     },
     "control-structures": {
       "patterns": [
@@ -200,14 +211,26 @@
             },
             {"include": "$self"}
           ]
+        },
+        {
+          "name": "meta.control.loop.nebula",
+          "begin": "\\b(enquanto|para|caminhando)\\b",
+          "beginCaptures": {"1": {"name": "keyword.control.flow.nebula"}},
+          "end": "\\b(fim)\\b",
+          "endCaptures": {"1": {"name": "keyword.control.flow.nebula"}},
+          "patterns": [{"include": "$self"}]
         }
       ]
+    },
+    "dictionary-keys": {
+      "name": "meta.dictionary.key.nebula",
+      "match": "\\b[a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*\\b(?=\\s*:)"
     },
     "function-calls": {
       "patterns": [
         {
           "name": "support.function.builtin.nebula",
-          "match": "\\b(falar|pegar|perguntar|input_int|número|raiz|cubo|quadrado|str|len|tipo|aleatório|ler_arquivo|escrever_arquivo|executar|eval|python|update|esperar)\\b(?=\\s*\\()"
+          "match": "\\b(falar|pegar|perguntar|input_int|número|raiz|cubo|quadrado|str|len|type|aleatório|ler_arquivo|escrever_arquivo|executar|eval|python|update|esperar)\\b(?=\\s*\\()"
         },
         {
           "name": "support.function.builtin.method.nebula",
@@ -218,6 +241,7 @@
           }
         },
         {
+          "name": "entity.name.function.call.nebula",
           "match": "\\b([a-zA-Z_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ][a-zA-Z0-9_áéíóúãâêôãõçÁÉÍÓÚÃÂÊÔÃÕÇ]*)\\s*(\\()",
           "captures": {
             "1": {"name": "entity.name.function.call.nebula"},
