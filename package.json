@@ -13,7 +13,7 @@
     "url": "https://github.com/rdb231-com231/vsnebula"
   },
   "version": "1.4.5",
-  "icon": "./neb.png",
+  "icon": "neb.png",
   "license": "MIT",
   "engines": {
     "vscode": "^1.94.0"

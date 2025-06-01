@@ -1,57 +1,35 @@
 {
-  "comments": {
-    "lineComment": "#"
-  },
-  "brackets": [
-    ["[", "]"],
-    ["(", ")"],
-    ["{", "}"],
-    ["\"", "\""],
-    ["${", "}"],
-    ["faça", "fim"],
-    ["tentar", "fim"],
-    ["comparar", "fim"],
-    ["se", "fim"],
-    ["enquanto", "fim"],
-    ["caminhando", "fim"],
-    ["para", "fim"],
-    ["classe", "fim"],
-    ["função", "fim"]
-  ],
-  "autoClosingPairs": [
-    ["[", "]"],
-    ["(", ")"],
-    ["{", "}"],
-    ["\"", "\""],
-    ["${", "}"],
-    ["faça", "fim"],
-    ["tentar", "fim"],
-    ["comparar", "fim"],
-    ["se", "fim"],
-    ["enquanto", "fim"],
-    ["caminhando", "fim"],
-    ["para", "fim"],
-    ["classe", "fim"],
-    ["função", "fim"]
-  ],
-  "surroundingPairs": [
-    ["[", "]"],
-    ["(", ")"],
-    ["{", "}"],
-    ["\"", "\""],
-    ["${", "}"],
-    ["faça", "fim"],
-    ["tentar", "fim"],
-    ["comparar", "fim"],
-    ["se", "fim"],
-    ["enquanto", "fim"],
-    ["caminhando", "fim"],
-    ["para", "fim"],
-    ["classe", "fim"],
-    ["função", "fim"]
-  ],
-  "indentationRules": {
-    "increaseIndentPattern": "\\b(faça|tentar|comparar|se|então|senão|enquanto|caminhando|para|cada|classe|função)\\b",
-    "decreaseIndentPattern": "\\b(fim)\\b"
-  }
+    "comments": {
+        // symbol used for single line comment. Remove this entry if your language does not support line comments
+        "lineComment": "#"
+    },
+    // symbols used as brackets
+    "brackets": [
+        ["[", "]"],
+        ["(", ")"],
+        ["{", "}"],
+        ["faça", "fim"],
+        ["então", "fim"],
+        ["${", "}"]
+    ],
+    // symbols that are auto closed when typing
+    "autoClosingPairs": [
+        ["[", "]"],
+        ["(", ")"],
+        ["\"", "\""],
+        ["{", "}"],
+        ["faça", "\nfim"],
+        ["então", "\nfim"],
+        ["${", "}"]
+    ],
+    // symbols that can be used to surround a selection
+    "surroundingPairs": [
+        ["[", "]"],
+        ["(", ")"],
+        ["\"", "\""],
+        ["faça", "fim"],
+        ["então", "fim"],
+        ["{", "}"],
+        ["${", "}"]
+    ]
 }

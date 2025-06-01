@@ -69,7 +69,7 @@
     },
     "builtin-types": {
       "name": "support.type.nebula",
-      "match": "\\b(lista|tupla|mesa|dicionário|string|número|verdadeiro|falso|nulo)\\b"
+      "match": "\\b(lista|tupla|mesa|dicionário|string|número|verdadeiro|falso|nulo|esse)\\b"
     },
     "operators": {
       "patterns": [
@@ -207,7 +207,7 @@
       "patterns": [
         {
           "name": "support.function.builtin.nebula",
-          "match": "\\b(falar|pegar|perguntar|input_int|número|raiz|cubo|quadrado|str|len|type|aleatório|ler_arquivo|escrever_arquivo|executar|eval|python|update|esperar)\\b(?=\\s*\\()"
+          "match": "\\b(falar|pegar|perguntar|input_int|número|raiz|cubo|quadrado|str|len|tipo|aleatório|ler_arquivo|escrever_arquivo|executar|eval|python|update|esperar)\\b(?=\\s*\\()"
         },
         {
           "name": "support.function.builtin.method.nebula",
