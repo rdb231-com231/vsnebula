@@ -1,0 +1,38 @@
+{
+  "extends": "material-icon-theme",
+  "iconDefinitions": {
+    "nebula-folder": {
+      "iconPath": "../nebfolder.svg"
+    },
+    "nebula-folder-open": {
+      "iconPath": "../nebfolder.svg"
+    },
+    "nebula-file": {
+      "iconPath": "../neb.png"
+    }
+  },
+  "folderNames": {
+    "neb": "nebula-folder",
+    "nebula": "nebula-folder",
+    "__nebula__": "nebula-folder",
+    ".nebula": "nebula-folder",
+    "src-nebula": "nebula-folder",
+    "src-neb": "nebula-folder",
+    "__neb__": "nebula-folder",
+    ".neb": "nebula-folder"
+  },
+  "folderNamesExpanded": {
+    "neb": "nebula-folder-open",
+    "nebula": "nebula-folder-open",
+    "__nebula__": "nebula-folder-open",
+    ".nebula": "nebula-folder-open",
+    "src-nebula": "nebula-folder-open",
+    "src-neb": "nebula-folder-open",
+    "__neb__": "nebula-folder-open",
+    ".neb": "nebula-folder-open"
+  },
+  "fileExtensions": {
+    "neb": "nebula-file",
+    "mod.neb": "nebula-module-file"
+  }
+}

@@ -3,6 +3,8 @@
   "displayName": "vsneb",
   "description": "Visual Studio Code support for Nebula",
   "publisher": "MewPlush",
+  "icon": "./neb.png",
+  "extensionDependencies": ["pkief.material-icon-theme"],
   "author": {
     "name": "MewPlush",
     "email": "flaviofdbastos@gmail.com",
@@ -13,7 +15,6 @@
     "url": "https://github.com/rdb231-com231/vsnebula"
   },
   "version": "1.4.5",
-  "icon": "neb.png",
   "license": "MIT",
   "engines": {
     "vscode": "^1.94.0"
@@ -22,20 +23,44 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "neb",
-      "aliases": ["Nebula", "neb"],
-      "extensions": [".neb"],
-      "configuration": "./language-configuration.json",
-      "icon": {
-        "dark": "./neb.png",
-        "light": "./neb.png"
+    "languages": [
+      {
+        "id": "neb",
+        "aliases": ["Nebula", "neb"],
+        "extensions": [".neb"],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "dark": "./neb.png",
+          "light": "./neb.png"
+        }
+      },
+      {
+        "id": "modneb",
+        "aliases": ["ModNebula", "modneb"],
+        "extensions": [".modneb"],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "dark": "./modneb.png",
+          "light": "./modneb.png"
+        }
       }
-    }],
-    "grammars": [{
+  ],
+    "grammars": [
+      {
       "language": "neb",
       "scopeName": "source.nebula",
       "path": "./syntaxes/neb.tmLanguage.json"
+      },
+      {
+      "language": "modneb",
+      "scopeName": "source.nebula",
+      "path": "./syntaxes/neb.tmLanguage.json"
+      }
+    ],
+    "iconThemes": [{
+      "id": "neb",
+      "label": "Nebula Icons",
+      "path": "./themes/neb.json"
     }]
   }
 }

@@ -15,6 +15,7 @@
     {"include": "#control-structures"},
     {"include": "#dictionary-keys"},
     {"include": "#self-reference"},
+    {"include": "#builtin-types"},
     {"include": "#identifiers"}
   ],
   "repository": {
