@@ -1,9 +1,9 @@
 {
   "name": "vsneb",
-  "displayName": "vsneb",
+  "displayName": "Nebula Visual Studio Code Support",
   "description": "Visual Studio Code support for Nebula",
   "publisher": "MewPlush",
-  "icon": "./neb.png",
+  "icon": "neb.png",
   "extensionDependencies": ["pkief.material-icon-theme"],
   "author": {
     "name": "MewPlush",
@@ -30,8 +30,8 @@
         "extensions": [".neb"],
         "configuration": "./language-configuration.json",
         "icon": {
-          "dark": "./neb.png",
-          "light": "./neb.png"
+          "dark": "neb.png",
+          "light": "neb.png"
         }
       },
       {

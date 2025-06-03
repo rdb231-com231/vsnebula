@@ -9,6 +9,9 @@
     },
     "nebula-file": {
       "iconPath": "../neb.png"
+    },
+    "nebula-module-file": {
+      "iconPath": "../modneb.png"
     }
   },
   "folderNames": {
@@ -33,6 +36,6 @@
   },
   "fileExtensions": {
     "neb": "nebula-file",
-    "mod.neb": "nebula-module-file"
+    "modneb": "nebula-module-file"
   }
 }
